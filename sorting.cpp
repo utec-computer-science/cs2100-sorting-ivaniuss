@@ -86,6 +86,57 @@ vector<int> sorting::BubbleSort(vector<int> &v1) {
 
 }
 
+vector<int> Merge(vector<int>& left, vector<int>&right) {
+    vector<int> result;
+    while ((int)left.size() > 0 || (int)right.size() > 0) {
+            if ((int)left.size() > 0 && (int)right.size() > 0) {
+                if ((int)left.front() <= (int)right.front()) {
+                    result.push_back((int)left.front());
+                    left.erase(left.begin());
+                }
+                else {
+                    result.push_back((int)right.front());
+                    right.erase(right.begin());
+                }
+            }  else if ((int)left.size() > 0) {
+                for (int i = 0; i < (int)left.size(); i++)
+                    result.push_back(left[i]);
+                break;
+            }  else if ((int)right.size() > 0) {
+                for (int i = 0; i < (int)right.size(); i++)
+                    result.push_back(right[i]);
+                break;
+            }
+        }
+    return result;
+}
+
+
+vector<int> sorting::MergeSort(vector<int> &v1) {
+    int mid = 0;
+    vector<int> left,right, result;
+
+    if (v1.size() <=1)
+        return v1;
+
+    mid = int((v1.size()+1)/2);
+
+    for (int i = 0; i < mid; ++i) {
+        left.emplace_back(v1[i]);
+    }
+
+    for (int i = mid; i < v1.size(); ++i) {
+        right.emplace_back(v1[i]);
+    }
+
+    left = MergeSort(left);
+    right = MergeSort(right);
+    result = Merge(left, right);
+
+    return result;
+}
+
+
 
 ostream &operator<<(ostream &os, const vector<int> &v) {
     for (const auto &i: v)
