@@ -58,6 +58,35 @@ vector<int>  sorting::SelectionSort(vector<int> &v1) {
     return v1;
 }
 
+
+vector<int> sorting::BubbleSort(vector<int> &v1) {
+
+
+    cout<< __PRETTY_FUNCTION__<<endl;
+
+    int n;
+    int x;
+    bool swapped;
+    n = v1.size();
+    swapped = true;
+    x = -1;
+
+    while (swapped){
+        swapped = false;
+        x = x + 1;
+        for (int i = 1; i < n - x ; ++i) {
+            if (v1[i - 1] > v1[i]){
+                swap(v1[i-1],v1[i]);
+                swapped = true;
+            }
+            
+        }
+    }
+    return v1;
+
+}
+
+
 ostream &operator<<(ostream &os, const vector<int> &v) {
     for (const auto &i: v)
         os << i << " ";
