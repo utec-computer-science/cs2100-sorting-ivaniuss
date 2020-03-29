@@ -1,7 +1,20 @@
+//
+// Created by ivaniuss on 3/29/20.
+//
 
 #include <iostream>
+#include <vector>
+#include "sorting.h"
 using namespace std;
 
 int main(int, char*[]){
-    return 1;
+
+    vector<int> v{5,6,1,8,3,6,8,5,2,7,9,3,9,12,8};
+
+    sorting s1{v};
+
+    cout<< s1.InsertSort(v);
+
+    return 0;
+
 }
