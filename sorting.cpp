@@ -37,6 +37,26 @@ vector<int>  sorting::InsertSort(vector<int> &v1) {
     return v1;
 
 }
+vector<int>  sorting::SelectionSort(vector<int> &v1) {
+
+    cout<< __PRETTY_FUNCTION__<<endl;
+
+    int min  = 0;
+
+    for (int i = 0; i < v1.size() - 1 ; ++i) {
+        min  = i;
+        for (int j = i+ 1; j < v1.size(); ++j) {
+            if (v1[j] < v1[min]){
+                min = j;
+            }
+            if (min!= i){
+                swap(v1[min], v1[i]);
+        }
+
+        }
+    }
+    return v1;
+}
 
 ostream &operator<<(ostream &os, const vector<int> &v) {
     for (const auto &i: v)
