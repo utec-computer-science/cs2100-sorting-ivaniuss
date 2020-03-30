@@ -162,6 +162,47 @@ void sorting::QuickSort(vector<int> &v1, int left_index, int right_index) {
 
 }
 
+vector<int> sorting::ShellSort(vector<int> &v1) {
+
+    cout<< __PRETTY_FUNCTION__<<endl;
+
+    for (int i = v1.size() / 2; i > 0; i /= 2) {
+        for (int j = i; j < v1.size(); j++) {
+            int jcopy = j;
+            int item = v1[j];
+
+            while (jcopy >= i && v1[jcopy - i] > item) {
+                v1[jcopy] = v1[jcopy - i];
+                jcopy -= i;
+            }
+
+            v1[jcopy] = item;
+        }
+    }
+    return v1;
+}
+
+
+vector<int> sorting::BinSort(vector<int>& v1) {
+    cout<< __PRETTY_FUNCTION__<<endl;
+    vector<int> bins[10];
+    int power = 1;
+
+    while(bins[0].size() != v1.size()){
+       for(int i = 0; i < 10; ++i)
+            bins[i].clear();
+        for(int i = 0; i < v1.size(); ++i){
+
+            bins[(v1[i]/power) % 10].push_back(v1[i]);
+
+        }
+        power *= 10;
+        v1.clear();
+        for(int i = 0; i < 10; ++i)
+            v1.insert(v1.end(), bins[i].begin(), bins[i].end());
+    }
+    return v1;
+}
 
 ostream &operator<<(ostream &os, const vector<int> &v) {
     for (const auto &i: v)
