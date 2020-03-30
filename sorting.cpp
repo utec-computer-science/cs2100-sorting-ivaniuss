@@ -136,6 +136,31 @@ vector<int> sorting::MergeSort(vector<int> &v1) {
     return result;
 }
 
+void sorting::QuickSort(vector<int> &v1, int left_index, int right_index) {
+
+    int left, right, pivot;
+    if(left_index >= right_index) return;
+
+    left = left_index;
+    right = right_index;
+
+    pivot = v1[(left_index + right_index) /2];
+
+    while(left <= right) {
+        while(v1[left] < pivot) left++;
+        while(v1[right] > pivot) right--;
+        if(left <= right) {
+            swap(v1[left],v1[right]);
+            left++;
+            right--;
+        }
+        cout << v1 << endl;
+    }
+
+    QuickSort(v1,left_index,right);
+    QuickSort(v1,left,right_index);
+
+}
 
 
 ostream &operator<<(ostream &os, const vector<int> &v) {
