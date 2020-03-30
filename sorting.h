@@ -21,6 +21,7 @@ public:
     static vector<int> SelectionSort(vector<int> &v1);
     static vector<int> BubbleSort(vector<int> &v1);
     static vector<int> MergeSort(vector<int> &v1);
+    static void QuickSort(vector<int> &v1, int left_index, int right_index);
 
     friend ostream &operator<<(ostream &os, const vector<int> &v);
 };

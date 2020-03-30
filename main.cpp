@@ -13,8 +13,7 @@ int main(int, char*[]){
 
     sorting s1{v};
 
-    cout<< s1.InsertSort(v);
-
+    s1.QuickSort(v,0,v.size()-1);
     return 0;
 
 }
